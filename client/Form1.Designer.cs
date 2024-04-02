@@ -1,4 +1,4 @@
-﻿namespace Server
+﻿namespace client
 {
     partial class Form1
     {
@@ -28,61 +28,60 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txt_HienThiChatServer = new System.Windows.Forms.TextBox();
-            this.btn_KhoiDong = new System.Windows.Forms.Button();
             this.btn_Gui = new System.Windows.Forms.Button();
+            this.btn_KetNoi = new System.Windows.Forms.Button();
+            this.txt_Nhan = new System.Windows.Forms.TextBox();
             this.txt_Gui = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // txt_HienThiChatServer
-            // 
-            this.txt_HienThiChatServer.Location = new System.Drawing.Point(34, 12);
-            this.txt_HienThiChatServer.Multiline = true;
-            this.txt_HienThiChatServer.Name = "txt_HienThiChatServer";
-            this.txt_HienThiChatServer.Size = new System.Drawing.Size(474, 305);
-            this.txt_HienThiChatServer.TabIndex = 0;
-    
-            // 
-            // btn_KhoiDong
-            // 
-            this.btn_KhoiDong.Location = new System.Drawing.Point(203, 345);
-            this.btn_KhoiDong.Name = "btn_KhoiDong";
-            this.btn_KhoiDong.Size = new System.Drawing.Size(145, 45);
-            this.btn_KhoiDong.TabIndex = 1;
-            this.btn_KhoiDong.Text = "khởi động";
-            this.btn_KhoiDong.UseVisualStyleBackColor = true;
-            this.btn_KhoiDong.Click += new System.EventHandler(this.btn_KhoiDong_Click);
-            // 
             // btn_Gui
             // 
-            this.btn_Gui.Location = new System.Drawing.Point(361, 407);
+            this.btn_Gui.Location = new System.Drawing.Point(305, 432);
             this.btn_Gui.Name = "btn_Gui";
-            this.btn_Gui.Size = new System.Drawing.Size(146, 60);
-            this.btn_Gui.TabIndex = 2;
+            this.btn_Gui.Size = new System.Drawing.Size(134, 52);
+            this.btn_Gui.TabIndex = 0;
             this.btn_Gui.Text = "Gửi";
             this.btn_Gui.UseVisualStyleBackColor = true;
             this.btn_Gui.Click += new System.EventHandler(this.btn_Gui_Click);
             // 
+            // btn_KetNoi
+            // 
+            this.btn_KetNoi.Location = new System.Drawing.Point(174, 344);
+            this.btn_KetNoi.Name = "btn_KetNoi";
+            this.btn_KetNoi.Size = new System.Drawing.Size(108, 52);
+            this.btn_KetNoi.TabIndex = 1;
+            this.btn_KetNoi.Text = "Kết Nối";
+            this.btn_KetNoi.UseVisualStyleBackColor = true;
+            this.btn_KetNoi.Click += new System.EventHandler(this.btn_KetNoi_Click);
+            // 
+            // txt_Nhan
+            // 
+            this.txt_Nhan.Location = new System.Drawing.Point(22, 15);
+            this.txt_Nhan.Multiline = true;
+            this.txt_Nhan.Name = "txt_Nhan";
+            this.txt_Nhan.Size = new System.Drawing.Size(417, 323);
+            this.txt_Nhan.TabIndex = 2;
+            // 
             // txt_Gui
             // 
-            this.txt_Gui.Location = new System.Drawing.Point(34, 407);
+            this.txt_Gui.Location = new System.Drawing.Point(22, 402);
             this.txt_Gui.Multiline = true;
             this.txt_Gui.Name = "txt_Gui";
-            this.txt_Gui.Size = new System.Drawing.Size(314, 60);
+            this.txt_Gui.Size = new System.Drawing.Size(274, 81);
             this.txt_Gui.TabIndex = 3;
+            this.txt_Gui.TextChanged += new System.EventHandler(this.txt_Gui_TextChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(551, 503);
+            this.ClientSize = new System.Drawing.Size(451, 504);
             this.Controls.Add(this.txt_Gui);
+            this.Controls.Add(this.txt_Nhan);
+            this.Controls.Add(this.btn_KetNoi);
             this.Controls.Add(this.btn_Gui);
-            this.Controls.Add(this.btn_KhoiDong);
-            this.Controls.Add(this.txt_HienThiChatServer);
             this.Name = "Form1";
             this.Text = "Form1";
-           
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -90,9 +89,9 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txt_HienThiChatServer;
-        private System.Windows.Forms.Button btn_KhoiDong;
         private System.Windows.Forms.Button btn_Gui;
+        private System.Windows.Forms.Button btn_KetNoi;
+        private System.Windows.Forms.TextBox txt_Nhan;
         private System.Windows.Forms.TextBox txt_Gui;
     }
 }

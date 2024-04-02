@@ -19,11 +19,6 @@ namespace Server
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
-        }
-
         private void StartServer()
         {
             serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -46,22 +41,30 @@ namespace Server
             int bytesRead = clientSocket.EndReceive(ia);
             string receivedData = Encoding.ASCII.GetString(buffer, 0, bytesRead);
 
-            // Display received data
-            SetText(receivedData);
+            
+            SetText(receivedData, false);
 
-            // Continue listening for more data
+         
             buffer = new byte[1024];
             clientSocket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, new AsyncCallback(ReceiveCallback), null);
         }
 
-        private void SetText(string text)
+        private void SetText(string text, bool isServer)
         {
             if (txt_HienThiChatServer.InvokeRequired)
             {
-                txt_HienThiChatServer.Invoke(new MethodInvoker(delegate { SetText(text); }));
+                txt_HienThiChatServer.Invoke(new MethodInvoker(delegate { SetText(text, isServer); }));
             }
             else
             {
+                if (isServer)
+                {
+                    stringBuilder.Append("Server: ");
+                }
+                else
+                {
+                    stringBuilder.Append("Client: ");
+                }
                 stringBuilder.Append(text);
                 stringBuilder.Append(Environment.NewLine);
                 txt_HienThiChatServer.Text = stringBuilder.ToString();
@@ -81,9 +84,34 @@ namespace Server
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error starting server: " + ex.Message);
+                MessageBox.Show("khong the khoi đong server: " + ex.Message);
             }
         }
 
+        private void btn_Gui_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (clientSocket != null && clientSocket.Connected)
+                {
+                    byte[] data = Encoding.ASCII.GetBytes(txt_Gui.Text);
+                    clientSocket.Send(data);
+                    txt_Gui.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("khong ket noi.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("loi data: " + ex.Message);
+            }
+        }
+
+        private void txt_HienThiChatServer_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
